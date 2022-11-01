@@ -45,6 +45,7 @@ class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyV
         overView.text = data.results[position].overview
     }
 
+
     override fun getItemCount() = data.results.size
 
 }
