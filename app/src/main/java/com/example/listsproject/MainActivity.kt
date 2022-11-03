@@ -1,9 +1,14 @@
 package com.example.listsproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listsproject.retrofit.Common
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,12 +16,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val fromServer = Common.retrofitService.getMovieList().execute().body()!!
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val fromServer = Common.retrofitService.getMovieList()
 
-        val adapter = MyAdapter(fromServer)
-        val rv =findViewById<RecyclerView>(R.id.recyclerView)
 
-        rv.adapter=adapter
+                withContext(Dispatchers.Main){
+                    val adapter = MyAdapter(fromServer)
+                    val rv =findViewById<RecyclerView>(R.id.recyclerView)
+
+                    rv.adapter=adapter
+                }
+            }catch (e:Exception){
+
+                Log.d("kmlkmkml", e.toString())
+            }
+
+
+
+
+        }
 
 
     }
