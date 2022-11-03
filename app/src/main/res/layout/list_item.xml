@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_bg"
-    android:layout_margin="10dp"
+    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -36,10 +36,10 @@
     <TextView
         android:id="@+id/overView"
         android:layout_width="match_parent"
-        android:layout_height="134dp"
+        android:layout_height="wrap_content"
         android:text="Hello"
         android:padding="7dp"
-        android:textSize="30sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />

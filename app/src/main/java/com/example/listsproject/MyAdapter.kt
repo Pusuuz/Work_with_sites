@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listsproject.model.Response
+import com.example.listsproject.retrofit.Common
 import com.squareup.picasso.Picasso
 
 class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -35,9 +36,12 @@ class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyV
         val overView = viewHolder.itemView.findViewById<TextView>(R.id.overView)
 
 
+        val url = Common.BASE_URL + data.results[position].poster_path.substringAfter("/") + "?api_key=f1a672a73440012ba36d7df4dda2d84c"
+
         Picasso.get()
-            .load(data.results[position].poster_path)
+            .load(url)
             .into(myImage)
+
 
 
         myTitle.text = data.results[position].title
