@@ -4,5 +4,4 @@ data class Response(
 val page: Int,
 val results: List<Movie>
 
-
 )

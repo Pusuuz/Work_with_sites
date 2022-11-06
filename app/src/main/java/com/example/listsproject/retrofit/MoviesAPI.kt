@@ -1,7 +1,9 @@
 package com.example.listsproject.retrofit
 
+import com.example.listsproject.model.DetailsResponse
 import com.example.listsproject.model.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesAPI {
@@ -9,6 +11,16 @@ interface MoviesAPI {
 
     @GET("movie/popular")
     suspend fun getMovieList(
-        @Query("api_key") key:String = "f1a672a73440012ba36d7df4dda2d84c"
+        @Query("api_key") key:String = Common.API_KEY,
+        @Query("language")ln:String = "ru"
     ): Response
+
+
+    @GET("movie/{movie_id")
+    suspend fun getMovieDetails(
+        @Query("api_key") key:String = Common.API_KEY,
+        @Path("movie_id") id:Int,
+        @Query("language")ln:String = "ru"
+    ):DetailsResponse
+
 }
