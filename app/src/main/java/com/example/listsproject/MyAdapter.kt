@@ -36,7 +36,7 @@ class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyV
         val overView = viewHolder.itemView.findViewById<TextView>(R.id.overView)
 
 
-        val url = Common.BASE_URL + data.results[position].poster_path.substringAfter("/") + "?api_key=f1a672a73440012ba36d7df4dda2d84c"
+        val url = Common.IMG_BASE_URL + data.results[position].poster_path
 
         Picasso.get()
             .load(url)
