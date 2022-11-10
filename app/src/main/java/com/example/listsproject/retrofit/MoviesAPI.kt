@@ -16,11 +16,11 @@ interface MoviesAPI {
     ): Response
 
 
-    @GET("movie/{movie_id")
+    @GET("movie/{movie_id}")
     suspend fun getMovieDetails(
         @Query("api_key") key:String = Common.API_KEY,
-        @Path("movie_id") id:Int,
-        @Query("language")ln:String = "ru"
+        @Path("movie_id") movie_id:Int,
+        @Query("language") ln:String = "ru"
     ):DetailsResponse
 
 }

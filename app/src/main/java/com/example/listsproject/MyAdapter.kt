@@ -12,7 +12,7 @@ import com.example.listsproject.model.Response
 import com.example.listsproject.retrofit.Common
 import com.squareup.picasso.Picasso
 
-class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val data: Response, val clicks: (Int) -> Unit) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
 
 
@@ -30,6 +30,12 @@ class MyAdapter(private val data: Response) : RecyclerView.Adapter<MyAdapter.MyV
 
 
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
+
+
+        viewHolder.itemView.rootView.setOnClickListener {
+            clicks.invoke(data.results[position].id)
+        }
+
 
         val myImage = viewHolder.itemView.findViewById<ImageView>(R.id.image)
         val myTitle = viewHolder.itemView.findViewById<TextView>(R.id.title)

@@ -28,10 +28,12 @@ class MainActivity : AppCompatActivity() {
 
 
                 withContext(Dispatchers.Main){
-                    val adapter = MyAdapter(fromServer)
+                    val adapter = MyAdapter(fromServer) { goToDetails(it) }
+
                     val rv =findViewById<RecyclerView>(R.id.recyclerView)
 
                     rv.adapter=adapter
+
 
                 }
             }catch (e:Exception){
@@ -41,7 +43,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun goToDetails(id:Int){
+
+        private fun goToDetails(id:Int){
         val intent = Intent(this,DetailsActivity::class.java)
         intent.putExtra("Movie",id)
         startActivity(intent)
