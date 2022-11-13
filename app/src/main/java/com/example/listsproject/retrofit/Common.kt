@@ -1,5 +1,7 @@
 package com.example.listsproject.retrofit
 
+import retrofit2.create
+
 object Common {
     const val IMG_BASE_URL = "https://image.tmdb.org/t/p/w500/"
     val BASE_URL = "https://api.themoviedb.org/3/"

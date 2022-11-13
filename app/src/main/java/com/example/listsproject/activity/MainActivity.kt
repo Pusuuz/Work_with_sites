@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-        private fun goToDetails(id:Int){
+    private fun goToDetails(id:Int){
         val intent = Intent(this,DetailsActivity::class.java)
         intent.putExtra("Movie",id)
         startActivity(intent)
-    }
 
+
+    }
 
 }
